@@ -1,14 +1,5 @@
-/* main.h */
-#ifndef MAIN_H
-#define MAIN_H
-
-int _putchar(char c);
-void print_fibonacci(int n);
-
-#endif /* MAIN_H */
-
-/* 104-fibonacci.c */
 #include "main.h"
+#include <stdio.h>
 
 /**
  * print_fibonacci - prints the first n Fibonacci numbers
@@ -16,28 +7,19 @@ void print_fibonacci(int n);
  */
 void print_fibonacci(int n)
 {
-    int i;
-    unsigned long int a = 1, b = 2, c;
+	unsigned long int a = 1, b = 2, c;
+	int i;
 
-    if (n >= 1)
-        _putchar('1');
-    if (n >= 2)
-        _putchar(',');
-        _putchar(' ');
-    for (i = 3; i <= n; i++) {
-        c = a + b;
-        a = b;
-        b = c;
-        printf("%lu", c);
-        if (i != n)
-            _putchar(',');
-            _putchar(' ');
-    }
-    _putchar('\n');
-}
-
-int main(void)
-{
-    print_fibonacci(98);
-    return (0);
+	if (n >= 1)
+		printf("%lu", a);
+	if (n >= 2)
+		printf(", %lu", b);
+	for (i = 3; i <= n; i++)
+	{
+		c = a + b;
+		printf(", %lu", c);
+		a = b;
+		b = c;
+	}
+	printf("\n");
 }
