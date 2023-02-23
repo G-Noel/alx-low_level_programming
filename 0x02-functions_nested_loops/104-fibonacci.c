@@ -2,24 +2,29 @@
 #include <stdio.h>
 
 /**
- * print_fibonacci - prints the first n Fibonacci numbers
+ * print_fibonacci - prints the first n Fibonacci numbers,
+ * starting with 1 and 2, followed by a new line
  * @n: the number of Fibonacci numbers to print
+ *
+ * Return: void
  */
 void print_fibonacci(int n)
 {
-	unsigned long int a = 1, b = 2, c;
-	int i;
+    int i;
+    unsigned long a = 1, b = 2, c;
 
-	if (n >= 1)
-		printf("%lu", a);
-	if (n >= 2)
-		printf(", %lu", b);
-	for (i = 3; i <= n; i++)
-	{
-		c = a + b;
-		printf(", %lu", c);
-		a = b;
-		b = c;
-	}
-	printf("\n");
+    if (n < 1)
+        return;
+
+    printf("%lu", a);
+
+    for (i = 2; i <= n; i++)
+    {
+        printf(", %lu", b);
+        c = a + b;
+        a = b;
+        b = c;
+    }
+
+    printf("\n");
 }
