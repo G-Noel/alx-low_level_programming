@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "main.h"
+#define PASSWORD_LEN 63
 
 /**
  * main - Generates random passwords for 101-crackme program
@@ -10,27 +11,24 @@
 
 int main(void)
 {
-	int sum = 0, diff_half = 0, n = 0;
-	char *password;
-	int i;
+	char password[PASSWORD_LEN + 1];
+	int i, sum;
 
+	/* Seed random number generator */
 	srand(time(NULL));
-	password = malloc(sizeof(char) * 100);
-	while (sum < 2772 - 122)
+
+	/* Generate random password */
+	for (i = 0, sum = 0; sum < PASSWORD_LEN; i++)
 	{
-		n = rand() % 78 + 48;
-		password[sum] = n;
-		sum += n;
+		password[i] = rand() % 94 + 33;
+		sum += password[i];
 	}
-	diff_half = (2772 - sum) / 2;
-	password[sum - 1] = diff_half;
-	password[sum] = diff_half;
-	password[sum + 1] = '\0';
 
-	for (i = 0; i < sum; i++)
-		password[i] = password[i] + i % 10;
+	/* Add null terminator */
+	password[i] = '\0';
 
-	printf("%s", password);
-	free(password);
-	return (0);
+	/* Print password */
+	printf("%s\n", password);
+
+	return 0;
 }
